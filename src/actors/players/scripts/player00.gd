@@ -3,6 +3,11 @@ extends KinematicBody2D
 var max_speed = 400
 var speed = 0
 var acceleration = 1200
+
+# Added
+var deceleration = 1200
+var zero_speed = 0
+
 var move_direction # only for art animation
 var moving = false
 var destination = Vector2()
@@ -22,14 +27,26 @@ func _physics_process(delta):
 
 # around 4:11 of the video
 func MovementLoop(delta):
-	if moving == false:
-		speed = 0
-	else:
+#	if moving == false:
+#		#speed = 0
+#
+#		# Added
+#		speed -= deceleration * delta
+##		if speed < zero_speed:
+##			speed = zero_speed
+#	else:
+#		speed += acceleration * delta
+#		if speed > max_speed:
+#			speed = max_speed
+	
+	if moving == true:
 		speed += acceleration * delta
 		if speed > max_speed:
 			speed = max_speed
 	movement = position.direction_to(destination) * speed
-	if position.distance_to(destination) > 5:
+	if position.distance_to(destination) > 200:
 		movement = move_and_slide(movement)
 	else:
-		moving = false
+#		moving = false
+#		speed -= deceleration * delta
+		position = position.move_toward(speed, delta * zero_speed)
