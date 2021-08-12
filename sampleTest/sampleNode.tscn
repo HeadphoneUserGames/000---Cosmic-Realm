@@ -3,3 +3,5 @@
 [node name="sampleNodeChange" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="."]
