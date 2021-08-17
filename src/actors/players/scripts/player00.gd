@@ -30,7 +30,7 @@ func MovementLoop(delta):
 	if moving == false:
 		speed = 0
 	else:
-#		speed += acceleration * delta
+		speed += acceleration * delta
 		movement = movement.move_toward(movement * speed, acceleration * delta)
 	if speed > max_speed:
 		speed = max_speed
